@@ -17,11 +17,80 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+
+html {
+  scroll-behavior: smooth;
 }
+
+
+
+
+button {
+  border: none;
+  outline: none;
+  background-color: none;
+}
+
+.btn_shadow {
+  padding: 10px 15px; 
+  border-radius: 6px;
+  transition: 0.3s all ease;
+  cursor: pointer;
+  color: white;
+  transition: 0.5s;
+}
+.btn_shadow {
+  background:#00040f ;
+  /* box-shadow: 4px 4px 8px #100e0e, -4px -4px 8px #0d0c0c; */
+}
+.btn_shadow:hover {
+ 
+  transform: translateY(-10px);
+}
+.box_shodow {
+  background:#00040f;
+  box-shadow: 4px 4px 8px #100e0e, -4px -4px 8px #0d0c0c;
+  border-radius: 10px;
+}
+/* .image {
+  border-radius: 10px;
+  
+  box-shadow: 4px 4px 8px #000000, -4px -4px 8px #0d0d0d;
+  background-color:#00040f;
+} */
+
+.btn:hover {
+  background: linear-gradient(
+    92.23deg,
+    #406aff 21.43%,
+    #3bace2 50.63%,
+    #b936ee 100%,
+    #ff56f6 117.04%
+  );
+  transition: 0.3s all ease;
+  transition: 0.5s;
+}
+.btn {
+  background: linear-gradient(
+    92.23deg,
+    #ff56f6 21.43%,
+    #b936ee 50.63%,
+    #3bace2 100%,
+    #406aff 117.04%
+  );
+  box-shadow: 0px 4.42184px 107.23px rgba(255, 86, 246, 0.51);
+}
+
+
+
+
+
+
+
+
+
+
+
