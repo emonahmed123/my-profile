@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -10,6 +9,7 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const Navbarall = () => {
@@ -35,9 +35,9 @@ const Navbarall = () => {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit text-white">
+          <Link href="/" className="font-bold text-inherit text-white">
             EMON <span className="AHEMD">AHEMD</span>
-          </p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -93,7 +93,7 @@ const Navbarall = () => {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link className="w-full text-wlhite" href={item} size="lg">
+            <Link className="w-full text-wlhite" href={item}>
               {item.replace(/^[/#]/, "")}
             </Link>
           </NavbarMenuItem>

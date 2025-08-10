@@ -41,17 +41,18 @@ const Myskills = () => {
       img: fire,
       color: "bg-yellow-600",
     },
+
     {
       id: 5,
-      name: "JavaScript",
-      img: javascripticon,
-      color: "bg-yellow-500",
-    },
-    {
-      id: 6,
       name: "React ",
       img: reactscripticon,
       color: "bg-blue-500",
+    },
+    {
+      id: 6,
+      name: "JavaScript",
+      img: javascripticon,
+      color: "bg-yellow-500",
     },
     {
       id: 7,
@@ -59,36 +60,37 @@ const Myskills = () => {
       img: Mongodbicon,
       color: "bg-green-500",
     },
-
     {
       id: 8,
-      name: "Nodejs",
-      img: nodejsicon,
-      color: "bg-green-600",
+      name: "Redux",
+      img: redux,
+      color: "bg-purple-500",
     },
+
     {
       id: 9,
       name: "Figma",
       img: figma,
       color: "bg-pink-500",
     },
+
     {
       id: 10,
-      name: "Redux",
-      img: redux,
-      color: "bg-purple-500",
+      name: "Nodejs",
+      img: nodejsicon,
+      color: "bg-green-500",
     },
     {
       id: 11,
       name: "Taliwind",
       img: tailwind,
-      color: "bg-teal-500",
+      color: "bg-teal-400",
     },
     {
       id: 12,
       name: "TypeScript",
       img: ts,
-      className: "bg-blue-600",
+      color: "bg-blue-600",
     },
   ];
 
@@ -105,7 +107,7 @@ const Myskills = () => {
         <div className="grid grid-cols-4 sm:grid-cols-6  gap-3 md:grid-cols-8  lg:grid-cols-9 xl:grid-cols-10 md:gap-5 place-itmes-center justify-items-center">
           {SKills?.map((skill) => (
             <div
-              className={`${skill.color} w-[80px] lg:w-[100px] border relative top-0   hover:top-[-10px] border-accent px-2 py-2 rounded-[9px] transition-all ease-in-out duration-500  cursor cursor-pointer text-white `}
+              className={`${skill.color} w-[80px] lg:w-[100px]  relative top-0   hover:top-[-10px]  px-2 py-2 rounded-[9px] transition-all ease-in-out duration-500  cursor cursor-pointer text-white `}
               key={skill.id}
             >
               <div>
@@ -117,7 +119,7 @@ const Myskills = () => {
                   alt=""
                 />
                 <div className="card-body">
-                  <h2 className=" text-para font-bold text-center text-[12px] leading-[22px] lg:text-[16px] lg:leading-[26px]">
+                  <h2 className=" text-white font-bold text-center text-[12px] leading-[22px] lg:text-[16px] lg:leading-[26px]">
                     {skill.name}
                   </h2>
                 </div>
