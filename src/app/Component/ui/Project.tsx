@@ -21,7 +21,7 @@ const Project = ({ project }: any) => {
           </div>
 
           <div className="button-content flex text-white justify-between mt-5">
-            <Link href={`/${_id}`}
+            <Link href={`/projects/${_id}`}
               className=" font-poppe gap-x-1   px-2 py-2 rounded-[5px] flex justify-center items-center btn text-white  text-[10px] lg:text-[12px]"
 
             >

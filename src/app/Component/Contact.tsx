@@ -9,10 +9,15 @@ const Contact = () => {
     const [email, setEmail] = useState('')
     console.log(email)
 
+
+    // Handler to update the state on input change
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
+    };
     const handlesubmit = (e: any) => {
         e.preventDefault()
-        const bal = e.target.value
-        console.log(bal)
+
+
         if (email !== '') {
             Swal.fire({
                 title: "Message sent Successfully",
@@ -110,7 +115,7 @@ const Contact = () => {
                                     labelPlacement="outside"
                                     variant="underlined"
                                     fullWidth
-                                    onBlur={(e) => setEmail(e.target.value)}
+                                    onChange={handleInputChange}
                                     color="success"
                                     placeholder="Enter your email"
                                     onClear={() => console.log("input cleared")}

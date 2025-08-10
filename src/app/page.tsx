@@ -1,34 +1,33 @@
-
-
 import Herosection from "@/app/Component/Herosection";
-import Myskills from "./Component/Myskills";
-import Services from "./Component/Services/Services";
-import Projects from "./Component/Projects";
-import Contact from "./Component/Contact";
 import About from "./Component/About";
-
+import Contact from "./Component/Contact";
+import Myskills from "./Component/Myskills";
+import Projects from "./Component/Projects";
+import Services from "./Component/Services/Services";
 
 const Home = async () => {
+  const res = await fetch(
+    "https://sports-facility-booking-platform-sable.vercel.app/api/slots/project",
+    {
+      cache: "no-store",
+    }
+  );
 
-  const res = await fetch('http://localhost:5000/project')
+  const data = await res.json();
 
-  const data = await res.json()
-
-  console.log(data)
+  // console.log(data)
   return (
     <>
-
       <Herosection />
       <Myskills />
       <Services />
 
-      <Projects projects={data} />
+      <Projects projects={data?.data} />
 
       <Contact />
       <About />
     </>
   );
-}
+};
 
-
-export default Home
+export default Home;

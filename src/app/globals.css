@@ -50,6 +50,15 @@ button {
  
   transform: translateY(-10px);
 }
+
+
+.btn_only_transform {
+ transition: 0.5s;
+   transition: 0.3s all ease;
+}
+.btn_only_transform:hover {
+  transform: translateY(-10px);
+}
 .box_shodow {
   background:#00040f;
   box-shadow: 4px 4px 8px #100e0e, -4px -4px 8px #0d0c0c;
