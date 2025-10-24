@@ -5,7 +5,7 @@ const LoadingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900">
       {/* Navigation Skeleton */}
-      <nav className="px-6 py-4">
+      {/* <nav className="px-6 py-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className={`h-8 w-32 rounded ${shimmer}`}></div>
           <div className="hidden md:flex space-x-8">
@@ -14,7 +14,7 @@ const LoadingPage = () => {
             ))}
           </div>
         </div>
-      </nav>
+      </nav> */}
 
       {/* Hero Section Skeleton */}
       <section className="px-6 py-16">
@@ -52,7 +52,7 @@ const LoadingPage = () => {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className={`h-80 w-72 rounded-2xl ${shimmer}`}></div>
+            <div className={`h-80 w-80 rounded-2xl ${shimmer}`}></div>
           </div>
         </div>
       </section>
