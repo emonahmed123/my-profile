@@ -20,7 +20,7 @@ const ExperienceData = [
 const Experience = () => {
   return (
     <section className="py-[60px] md:py-[80px] font-poppe" id="experience">
-      <div className="max-w-[1170px] px-5 xl:px0 mx-auto">
+      <div className="max-w-[1170px] px-5 xl:px-0 mx-auto">
         <h2 className="text-3xl pb-5 text-center font-bold text-white">
           MY{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
