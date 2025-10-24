@@ -5,11 +5,7 @@ import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "./Component/shared/Footer";
 import "./globals.css";
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -36,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable}  antialiased    bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 `}
+        className={` ${geistMono.variable} ${poppins.variable}  antialiased    bg-gradient-to-br from-purple-900 via-purple-800 to-indigo-900 `}
       >
         <Providers>
           <Navbarall />

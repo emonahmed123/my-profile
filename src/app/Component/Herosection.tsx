@@ -34,7 +34,7 @@ const Herosection = () => {
                     strings: [
                       "JUNIOR WEBDEVELOPER",
                       "REACT DEVELOPER",
-                      "MERN STACK DEVELPER",
+                      "MERN STACK DEVELOPER",
                     ],
                     deleteSpeed: 50,
                     // pauseFor: 500,
