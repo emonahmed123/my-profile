@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 
+import Image from "next/image";
 import Link from "next/link";
 import { FaRegCircleDot } from "react-icons/fa6";
 import { MdLiveTv } from "react-icons/md";
@@ -13,10 +14,12 @@ const Project = ({ project }: any) => {
       <div className="portfolio-card p-[0.9rem]  md:p-[2rem] max-w-[375px] text-accent hover:text-white border  border-[#A740CD]">
         <div className="text-left  image-content">
           <div className=" flex justify-center">
-            <img
+            <Image
               className="w-[300px] h-[200px]   md:w-[500px] md:h-[300px]"
               src={image}
               alt="project"
+              width={500}
+              height={300}
             />
           </div>
 

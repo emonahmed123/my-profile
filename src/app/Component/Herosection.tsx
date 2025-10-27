@@ -15,7 +15,7 @@ import bg from "../../assets/my-bg2.png";
 
 const Herosection = () => {
   return (
-    <section className="py-[60px] md:py-[80px]">
+    <section id="home" className="py-[60px] md:py-[80px]">
       <div className=" shink-0  max-w-[1170px] mx-auto flex flex-col-reverse md:flex-row justify-between gap-5 px-5 xl:px-0 ">
         <div className="w-full lg:w-2/3">
           <div>
