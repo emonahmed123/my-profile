@@ -1,26 +1,270 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* shadcn semantic surface */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* brand — the lime CTA family */
+  --color-primary-active: var(--primary-active);
+  --color-primary-neutral: var(--primary-neutral);
+  --color-primary-pale: var(--primary-pale);
+  --color-on-primary: var(--ink-deep);
+
+  /* brand — surface */
+  --color-canvas: var(--canvas);
+  --color-canvas-soft: var(--canvas-soft);
+
+  /* brand — text */
+  --color-ink: var(--ink);
+  --color-ink-deep: var(--ink-deep);
+  --color-body: var(--body);
+  --color-mute: var(--mute);
+
+  /* semantic */
+  --color-positive: var(--positive);
+  --color-positive-deep: var(--positive-deep);
+  --color-warning: var(--warning);
+  --color-warning-deep: var(--warning-deep);
+  --color-warning-content: var(--warning-content);
+  --color-negative: var(--negative);
+  --color-negative-deep: var(--negative-deep);
+  --color-negative-darkest: var(--negative-darkest);
+  --color-negative-bg: var(--negative-bg);
+
+  /* tertiary illustration accents */
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-cyan: var(--accent-cyan);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* two-face display system: Manrope 800/900 stands in for Wise Sans, Inter for everything else */
+  --font-display: var(--font-brand-display);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-brand-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  /* radius scale — 24px (xl) is the canonical button + card radius */
+  --radius-none: 0px;
+  --radius-sm: 0.5rem; /* 8px  — inline pills, small badges */
+  --radius-md: 0.75rem; /* 12px — form inputs, small chrome */
+  --radius-lg: 1rem; /* 16px — mid-size cards */
+  --radius-xl: 1.5rem; /* 24px — canonical button + card */
+  --radius-2xl: 2rem; /* 32px */
+  --radius-3xl: 2.5rem; /* 40px */
+  --radius-pill: 9999px;
+
+  /* marketing container centres at ~1200px */
+  --container-marketing: 80rem;
+
+  /* display scale — Wise Sans substitute, weight 900 */
+  --text-display-mega: 7.875rem; /* 126px */
+  --text-display-mega--line-height: 0.85;
+  --text-display-mega--font-weight: 900;
+
+  --text-display-xxl: 6rem; /* 96px */
+  --text-display-xxl--line-height: 0.85;
+  --text-display-xxl--font-weight: 900;
+
+  --text-display-xl: 4rem; /* 64px */
+  --text-display-xl--line-height: 0.85;
+  --text-display-xl--font-weight: 900;
+
+  --text-display-lg: 2.9375rem; /* 47px — the one light sub-display */
+  --text-display-lg--line-height: 1.5;
+  --text-display-lg--letter-spacing: -0.0023em;
+  --text-display-lg--font-weight: 400;
+
+  --text-display-md: 2.5rem; /* 40px */
+  --text-display-md--line-height: 0.85;
+  --text-display-md--font-weight: 900;
+
+  /* sub-display scale — Inter, weight 600 */
+  --text-display-sm: 2rem; /* 32px */
+  --text-display-sm--line-height: 1.2;
+  --text-display-sm--letter-spacing: -0.03em;
+  --text-display-sm--font-weight: 600;
+
+  --text-display-xs: 1.5rem; /* 24px */
+  --text-display-xs--line-height: 1.3;
+  --text-display-xs--letter-spacing: -0.02em;
+  --text-display-xs--font-weight: 600;
+
+  /* body scale — Inter */
+  --text-body-lg: 1.25rem; /* 20px */
+  --text-body-lg--line-height: 1.5;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 1rem; /* 16px */
+  --text-body-md--line-height: 1.5;
+  --text-body-md--font-weight: 400;
+
+  --text-body-sm: 0.875rem; /* 14px */
+  --text-body-sm--line-height: 1.4286;
+  --text-body-sm--font-weight: 400;
+
+  --text-caption: 0.75rem; /* 12px */
+  --text-caption--line-height: 1.3333;
+  --text-caption--font-weight: 400;
+
+  --text-button-md: 1rem; /* 16px */
+  --text-button-md--line-height: 1.5;
+  --text-button-md--font-weight: 600;
+}
+
+:root {
+  /* ── brand palette (raw values, never used directly in markup) ── */
+  --primary: #9fe870;
+  --primary-active: #cdffad;
+  --primary-neutral: #c5edab;
+  --primary-pale: #e2f6d5;
+
+  --canvas: #ffffff;
+  --canvas-soft: #e8ebe6;
+
+  --ink: #0e0f0c;
+  --ink-deep: #163300;
+  --body: #454745;
+  --mute: #868685;
+
+  --positive: #2ead4b;
+  --positive-deep: #054d28;
+  --warning: #ffd11a;
+  --warning-deep: #b86700;
+  --warning-content: #4a3b1c;
+  --negative: #d03238;
+  --negative-deep: #a72027;
+  --negative-darkest: #a7000d;
+  --negative-bg: #320707;
+
+  --accent-orange: #ffc091;
+  --accent-cyan: #38c8ff;
+
+  /* Manrope 800/900 substitutes for the proprietary Wise Sans */
+  --font-brand-display:
+    var(--font-sans, "Manrope"), ui-sans-serif, system-ui, sans-serif;
+
+  /* ── semantic mapping consumed by shadcn components ── */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--canvas);
+  --card-foreground: var(--ink);
+  --popover: var(--canvas);
+  --popover-foreground: var(--ink);
+  --primary-foreground: var(--ink-deep);
+  --secondary: var(--canvas-soft);
+  --secondary-foreground: var(--ink);
+  --muted: var(--canvas-soft);
+  --muted-foreground: var(--mute);
+  --accent: var(--primary-pale);
+  --accent-foreground: var(--ink-deep);
+  --destructive: var(--negative);
+
+  /* Level 1 elevation is a 1px ink hairline; border-soft is a derived divider tint */
+  --border: var(--ink);
+  --border-soft: color-mix(in oklab, var(--ink) 12%, transparent);
+  --input: var(--ink);
+  --ring: var(--ink);
+
+  --chart-1: var(--primary);
+  --chart-2: var(--accent-cyan);
+  --chart-3: var(--accent-orange);
+  --chart-4: var(--positive);
+  --chart-5: var(--warning);
+
+  --radius: 1.5rem;
+
+  --sidebar: var(--canvas-soft);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--ink-deep);
+  --sidebar-accent: var(--primary-pale);
+  --sidebar-accent-foreground: var(--ink-deep);
+  --sidebar-border: var(--border-soft);
+  --sidebar-ring: var(--ink);
+}
+
+.dark {
+  /* polarity flip: ink canvas, sage text, Wise green stays the sole accent */
+  --background: var(--ink);
+  --foreground: var(--canvas-soft);
+  --card: color-mix(in oklab, var(--ink) 92%, #ffffff);
+  --card-foreground: var(--canvas-soft);
+  --popover: color-mix(in oklab, var(--ink) 92%, #ffffff);
+  --popover-foreground: var(--canvas-soft);
+  --primary-foreground: var(--ink-deep);
+  --secondary: color-mix(in oklab, var(--ink) 88%, #ffffff);
+  --secondary-foreground: var(--canvas-soft);
+  --muted: color-mix(in oklab, var(--ink) 88%, #ffffff);
+  --muted-foreground: var(--mute);
+  --accent: color-mix(in oklab, var(--primary) 18%, transparent);
+  --accent-foreground: var(--primary);
+  --destructive: var(--negative);
+
+  --border: color-mix(in oklab, var(--canvas-soft) 24%, transparent);
+  --border-soft: color-mix(in oklab, var(--canvas-soft) 12%, transparent);
+  --input: color-mix(in oklab, var(--canvas-soft) 24%, transparent);
+  --ring: var(--primary);
+
+  --sidebar: color-mix(in oklab, var(--ink) 92%, #ffffff);
+  --sidebar-foreground: var(--canvas-soft);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--ink-deep);
+  --sidebar-accent: color-mix(in oklab, var(--primary) 18%, transparent);
+  --sidebar-accent-foreground: var(--primary);
+  --sidebar-border: color-mix(in oklab, var(--canvas-soft) 12%, transparent);
+  --sidebar-ring: var(--primary);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "calt";
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
 }
