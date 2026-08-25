@@ -1,3 +1,4 @@
+import PreloaderStairs from "@/components/ui/preloader-stairs";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, Manrope } from "next/font/google";
@@ -37,7 +38,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         manrope.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <PreloaderStairs />
+        {children}
+      </body>
     </html>
   );
 }
