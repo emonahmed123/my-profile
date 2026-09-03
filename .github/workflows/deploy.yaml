@@ -6,6 +6,13 @@ jobs:
   test-code:
     runs-on: ubuntu-latest
     steps:
-      - name: run the task
-        run: |
-          node -v
+      - name: copy code
+        uses: actions/checkout@v7
+
+      - name: install node js
+        uses: actions/setup-node@v3
+        with:
+          node-version: v22.23.2
+
+      - name: check node version
+        run: node -v
