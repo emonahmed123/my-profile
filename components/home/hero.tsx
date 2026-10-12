@@ -1,8 +1,7 @@
 import { Download } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
 import Navbar from "@/components/home/navbar";
+import PortraitCard from "@/components/home/portrait-card";
 import DotPattern from "@/components/ui/dot-pattern-1";
 import DesignFrame from "../ui/design-frame";
 
@@ -41,18 +40,18 @@ export function Hero() {
             </DesignFrame>
 
             <p className="mt-6 max-w-md text-body-sm text-body md:text-body-md">
-              Full-Stack Software Engineer specializing in performant React
-              applications, robust Node.js backend systems, and cloud
-              optimization.
+              Full-Stack Web Developer specializing in high-performance React
+              and Next.js applications, scalable Node.js backends, and seamless
+              user experiences.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
+              <a
                 href="#contact"
                 className="inline-flex h-12 items-center justify-center rounded-xl bg-primary px-6 text-button-md text-on-primary transition-colors hover:bg-primary-active"
               >
                 Let&apos;s Talk
-              </Link>
+              </a>
               <a
                 href="/resume.pdf"
                 download
@@ -64,7 +63,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative min-h-[26rem] w-full sm:min-h-[32rem] lg:min-h-[42rem]">
+          <div className="relative px-4 pb-12 pt-4 md:px-8 lg:py-10">
             <div aria-hidden className="absolute -inset-8">
               <div className="absolute inset-0 opacity-45 blur-2xl bg-[radial-gradient(60%_60%_at_58%_45%,var(--primary)_0%,transparent_70%)]" />
               <DotPattern
@@ -75,16 +74,7 @@ export function Hero() {
               />
             </div>
 
-            <div className="absolute inset-0 top-[-160px] z-10 overflow-hidden rounded-xl">
-              <Image
-                src="/assets/images/my-bg2.webp"
-                alt="Portrait of Emon Ahmed"
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-top"
-              />
-            </div>
+            <PortraitCard className="relative z-10 mx-auto w-full max-w-md lg:mr-0 lg:max-w-lg" />
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import ClickSounds from "@/components/ui/click-sounds";
 import PreloaderStairs from "@/components/ui/preloader-stairs";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={cn(
         "h-full",
         "antialiased",
@@ -40,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <PreloaderStairs />
+        <ClickSounds />
         {children}
       </body>
     </html>
