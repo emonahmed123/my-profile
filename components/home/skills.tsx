@@ -42,7 +42,7 @@ export const CAPABILITIES: Capability[] = [
     description:
       "App Router, Server Components and streaming UIs tuned for Lighthouse 90+.",
     icon: Atom,
-    tools: ["React", "Next.js", "React Native", "TanStack Query"],
+    tools: ["React", "Next.js", "React Native", "Redux", "TanStack Query"],
   },
   {
     title: "Node.js & APIs",

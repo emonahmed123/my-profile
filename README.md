@@ -23,13 +23,14 @@ I am a Full-Stack Web Developer based in Tangail, Bangladesh, focused on buildin
 
 ### Core skills
 
-| Area      | Technologies                                          |
-| --------- | ----------------------------------------------------- |
-| Languages | TypeScript, JavaScript                                |
-| Frontend  | React, Next.js, React Native, Tailwind CSS, shadcn/ui |
-| Backend   | Node.js, Express, REST APIs                           |
-| Data      | PostgreSQL, MongoDB, Prisma                           |
-| Tooling   | Git, GitHub, Docker, Vercel, Figma                    |
+| Area         | Technologies                                          |
+| ------------ | ----------------------------------------------------- |
+| Languages    | TypeScript, JavaScript                                |
+| Frontend     | React, Next.js, React Native, Tailwind CSS, shadcn/ui |
+| State & data | Redux, TanStack Query                                 |
+| Backend      | Node.js, Express, REST APIs                           |
+| Databases    | PostgreSQL, MongoDB, Prisma                           |
+| Tooling      | Git, GitHub, Docker, Vercel, Figma                    |
 
 I am always open to discussing new opportunities, collaborations and interesting product ideas.
 
