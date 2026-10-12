@@ -169,7 +169,8 @@ export function AiSkills({ className }: AiSkillsProps) {
           {AI_SKILL_AUTHORS.map((author) => (
             <li
               key={author.handle}
-              className="rounded-xl border border-canvas-soft/10 p-6"
+              // min-w-0: let the card shrink so the nowrap command scrolls inside it
+              className="min-w-0 rounded-xl border border-canvas-soft/10 p-4 md:p-6"
             >
               <div className="flex items-center gap-3">
                 <span
@@ -205,7 +206,7 @@ export function AiSkills({ className }: AiSkillsProps) {
                         href={skill.href ?? `https://github.com/${skill.repo}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-body-md font-semibold text-primary underline-offset-4 hover:underline"
+                        className="inline-flex min-w-0 items-center gap-1 font-mono text-body-md font-semibold text-primary underline-offset-4 wrap-anywhere hover:underline"
                       >
                         /{skill.name}
                         <ArrowUpRight aria-hidden className="size-4" />
