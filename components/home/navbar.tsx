@@ -1,4 +1,5 @@
 import BrandMark from "@/components/home/brand-mark";
+import MobileNav from "@/components/home/mobile-nav";
 import NavLink from "@/components/home/nav-link";
 import StickyNav from "@/components/home/sticky-nav";
 import SoundToggle from "@/components/ui/sound-toggle";
@@ -41,10 +42,11 @@ export function Navbar({ links = NAV_LINKS, className }: NavbarProps) {
           <SoundToggle />
           <a
             href="#contact"
-            className="inline-flex h-10 shrink-0 items-center rounded-xl bg-primary px-5 text-body-sm font-semibold text-on-primary transition-colors hover:bg-primary-active"
+            className="hidden h-10 shrink-0 items-center rounded-xl bg-primary px-5 text-body-sm font-semibold text-on-primary transition-colors hover:bg-primary-active sm:inline-flex"
           >
             Let&apos;s Talk
           </a>
+          <MobileNav links={links} />
         </div>
       </nav>
     </StickyNav>
