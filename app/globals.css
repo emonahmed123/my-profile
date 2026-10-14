@@ -186,7 +186,7 @@
 
   /* Manrope 800/900 substitutes for the proprietary Wise Sans */
   --font-brand-display:
-    var(--font-sans, "Manrope"), ui-sans-serif, system-ui, sans-serif;
+    var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 
   /* ── semantic mapping consumed by shadcn components ── */
   --background: var(--canvas);
