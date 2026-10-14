@@ -16,7 +16,7 @@ const SHORTCUTS = [
 
 /** 404 — the hero's frame and glow, with my face standing in for the zero. */
 export default function NotFound() {
-  const pageTitle = "Page not found · Emon Ahmed";
+ 
 
   return (
     <main className="relative flex flex-1 flex-col overflow-hidden bg-background px-4 md:px-6">
