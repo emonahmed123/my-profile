@@ -24,7 +24,11 @@ interface SkillAuthor {
   skills: AgentSkill[];
 }
 
-/** Agent skills in my daily workflow, grouped by who wrote them. */
+/**
+ * Agent skills in my daily workflow, grouped by who wrote them.
+ * Order matters on lg: cards sit two-up and share row height, so pair
+ * authors with the same skill count; WIDE_AUTHOR_MIN+ skills take a full row.
+ */
 export const AI_SKILL_AUTHORS: SkillAuthor[] = [
   {
     name: "Fission",
@@ -38,6 +42,19 @@ export const AI_SKILL_AUTHORS: SkillAuthor[] = [
         note: "5 commands",
         command: "npm install -g @fission-ai/openspec@latest",
         href: "https://openspec.dev",
+      },
+    ],
+  },
+  {
+    name: "Addy Osmani",
+    handle: "addyosmani",
+    skills: [
+      {
+        name: "agent-skills",
+        description:
+          "Senior-engineer workflows and quality gates across the whole software lifecycle.",
+        repo: "addyosmani/agent-skills",
+        note: "24 skills",
       },
     ],
   },
@@ -58,6 +75,26 @@ export const AI_SKILL_AUTHORS: SkillAuthor[] = [
           "Scans the codebase for deepening opportunities, reports them visually, then talks through the one I pick.",
         repo: "mattpocock/skills",
         skill: "improve-codebase-architecture",
+      },
+    ],
+  },
+  {
+    name: "Paul Bakaus",
+    handle: "pbakaus",
+    skills: [
+      {
+        name: "impeccable",
+        description:
+          "Design, critique, audit and polish interfaces — hierarchy, type, colour, motion and accessibility.",
+        repo: "pbakaus/impeccable",
+        skill: "impeccable",
+      },
+      {
+        name: "frontend-design",
+        description:
+          "Steers the agent away from generic, AI-looking UI toward deliberate design choices.",
+        repo: "pbakaus/impeccable",
+        skill: "frontend-design",
       },
     ],
   },
@@ -88,40 +125,10 @@ export const AI_SKILL_AUTHORS: SkillAuthor[] = [
       },
     ],
   },
-  {
-    name: "Paul Bakaus",
-    handle: "pbakaus",
-    skills: [
-      {
-        name: "impeccable",
-        description:
-          "Design, critique, audit and polish interfaces — hierarchy, type, colour, motion and accessibility.",
-        repo: "pbakaus/impeccable",
-        skill: "impeccable",
-      },
-      {
-        name: "frontend-design",
-        description:
-          "Steers the agent away from generic, AI-looking UI toward deliberate design choices.",
-        repo: "pbakaus/impeccable",
-        skill: "frontend-design",
-      },
-    ],
-  },
-  {
-    name: "Addy Osmani",
-    handle: "addyosmani",
-    skills: [
-      {
-        name: "agent-skills",
-        description:
-          "Senior-engineer workflows and quality gates across the whole software lifecycle.",
-        repo: "addyosmani/agent-skills",
-        note: "24 skills",
-      },
-    ],
-  },
 ];
+
+/** Authors with at least this many skills span both columns on lg. */
+const WIDE_AUTHOR_MIN = 3;
 
 function installCommand({ repo, skill, command }: AgentSkill) {
   if (command) return command;
@@ -141,7 +148,7 @@ interface AiSkillsProps {
   className?: string;
 }
 
-/** AI-skills band — the polarity-flipped dark card, authors two-up. */
+/** AI-skills band — the polarity-flipped dark card, authors two-up (big authors span the row). */
 export function AiSkills({ className }: AiSkillsProps) {
   const total = AI_SKILL_AUTHORS.reduce((n, a) => n + a.skills.length, 0);
 
@@ -166,69 +173,93 @@ export function AiSkills({ className }: AiSkillsProps) {
         </div>
 
         <ul className="mt-12 grid gap-6 lg:grid-cols-2">
-          {AI_SKILL_AUTHORS.map((author) => (
-            <li
-              key={author.handle}
-              // min-w-0: let the card shrink so the nowrap command scrolls inside it
-              className="min-w-0 rounded-xl border border-canvas-soft/10 p-4 md:p-6"
-            >
-              <div className="flex items-center gap-3">
-                <span
-                  aria-hidden
-                  className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-body-sm font-semibold text-on-primary"
-                >
-                  {toInitials(author.name)}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-body-md font-semibold text-canvas-soft">
-                    {author.name}
-                  </h3>
-                  <a
-                    href={`https://github.com/${author.handle}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-body-sm text-canvas-soft/60 underline-offset-4 hover:text-canvas-soft hover:underline"
+          {AI_SKILL_AUTHORS.map((author) => {
+            const wide = author.skills.length >= WIDE_AUTHOR_MIN;
+            return (
+              <li
+                key={author.handle}
+                // min-w-0: let the card shrink so the nowrap command scrolls inside it
+                className={cn(
+                  "flex min-w-0 flex-col rounded-xl border border-canvas-soft/10 p-4 md:p-6",
+                  wide && "lg:col-span-2",
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    aria-hidden
+                    className="grid size-10 shrink-0 place-items-center rounded-full bg-primary text-body-sm font-semibold text-on-primary"
                   >
-                    @{author.handle}
-                  </a>
+                    {toInitials(author.name)}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-body-md font-semibold text-canvas-soft">
+                      {author.name}
+                    </h3>
+                    <a
+                      href={`https://github.com/${author.handle}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-body-sm text-canvas-soft/60 underline-offset-4 hover:text-canvas-soft hover:underline"
+                    >
+                      @{author.handle}
+                    </a>
+                  </div>
+                  <span className="text-caption text-canvas-soft/60">
+                    {author.skills.length}{" "}
+                    {author.skills.length === 1 ? "skill" : "skills"}
+                  </span>
                 </div>
-                <span className="text-caption text-canvas-soft/60">
-                  {author.skills.length}{" "}
-                  {author.skills.length === 1 ? "skill" : "skills"}
-                </span>
-              </div>
 
-              <ul className="mt-6 divide-y divide-canvas-soft/10">
-                {author.skills.map((skill) => (
-                  <li key={skill.name} className="py-5 first:pt-0 last:pb-0">
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <a
-                        href={skill.href ?? `https://github.com/${skill.repo}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex min-w-0 items-center gap-1 font-mono text-body-md font-semibold text-primary underline-offset-4 wrap-anywhere hover:underline"
-                      >
-                        /{skill.name}
-                        <ArrowUpRight aria-hidden className="size-4" />
-                      </a>
-                      {skill.note && (
-                        <span className="rounded-pill bg-canvas-soft/10 px-2.5 py-0.5 text-caption text-canvas-soft/80">
-                          {skill.note}
-                        </span>
+                {/* flex-1 + last:flex-1 + mt-auto: install commands line up at
+                    the bottom of cards sharing a row */}
+                <ul className="mt-6 flex flex-1 flex-col divide-y divide-canvas-soft/10">
+                  {author.skills.map((skill) => (
+                    <li
+                      key={skill.name}
+                      className={cn(
+                        "flex min-w-0 flex-col py-5 first:pt-0 last:flex-1 last:pb-0",
+                        // wide: copy beside the command, so the command keeps its full width
+                        wide && "lg:grid lg:grid-cols-2 lg:gap-x-8",
                       )}
-                    </div>
-                    <p className="mt-2 text-body-sm text-canvas-soft/70">
-                      {skill.description}
-                    </p>
-                    <CopyCommand
-                      command={installCommand(skill)}
-                      className="mt-3"
-                    />
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
+                    >
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <a
+                          href={skill.href ?? `https://github.com/${skill.repo}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex min-w-0 items-center gap-1 font-mono text-body-md font-semibold text-primary underline-offset-4 wrap-anywhere hover:underline"
+                        >
+                          /{skill.name}
+                          <ArrowUpRight aria-hidden className="size-4" />
+                        </a>
+                        {skill.note && (
+                          <span className="rounded-pill bg-canvas-soft/10 px-2.5 py-0.5 text-caption text-canvas-soft/80">
+                            {skill.note}
+                          </span>
+                        )}
+                      </div>
+                      <p
+                        className={cn(
+                          "mt-2 mb-3 text-body-sm text-canvas-soft/70",
+                          wide && "lg:mb-0",
+                        )}
+                      >
+                        {skill.description}
+                      </p>
+                      <CopyCommand
+                        command={installCommand(skill)}
+                        className={cn(
+                          "mt-auto",
+                          wide &&
+                            "lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:self-center",
+                        )}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </section>
