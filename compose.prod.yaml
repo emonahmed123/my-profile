@@ -1,0 +1,24 @@
+
+name: emon-portfolio-prod
+
+services:
+  web:
+    build:
+      context: .
+      target: runner
+    image: emon-portfolio:latest
+    ports:
+      - "${PORT:-3000}:3000"
+    # come back up after a crash or a host reboot
+    restart: unless-stopped
+    # the slim image has no curl, so probe with Node's built-in fetch
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://localhost:3000').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
