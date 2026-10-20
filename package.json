@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "docker:dev": "docker compose -f compose.dev.yaml watch",
+    "docker:prod": "docker compose -f compose.prod.yaml up --build -d"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

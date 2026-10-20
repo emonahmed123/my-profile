@@ -65,6 +65,24 @@ pnpm build    # production build
 pnpm lint
 ```
 
+### Run with Docker
+
+The `Dockerfile` builds a small production image from Next.js's standalone output and runs it as a non-root user.
+
+```bash
+docker build -t emon-portfolio .
+docker run -p 3000:3000 emon-portfolio   # http://localhost:3000
+```
+
+Or use the two Compose files:
+
+| File                | Mode                                          | Command                                                                  |
+| ------------------- | --------------------------------------------- | ------------------------------------------------------------------------ |
+| `compose.dev.yaml`  | `next dev` with hot reload                    | `pnpm docker:dev` (`docker compose -f compose.dev.yaml watch`)           |
+| `compose.prod.yaml` | production server, health check, auto-restart | `pnpm docker:prod` (`docker compose -f compose.prod.yaml up --build -d`) |
+
+Stop either with `docker compose -f <file> down`. The dev file uses Compose Watch, which syncs each saved file into the container so hot reload works on Windows and macOS too.
+
 ## Contact
 
 - Email: [imonshomon@gmail.com](mailto:imonshomon@gmail.com)

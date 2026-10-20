@@ -1,0 +1,30 @@
+# Development — `next dev` with hot reload.
+#   docker compose -f compose.dev.yaml watch      → http://localhost:3000
+#   PORT=3001 docker compose -f compose.dev.yaml watch
+#   docker compose -f compose.dev.yaml down       (stop + remove)
+
+name: emon-portfolio-dev
+
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "${PORT:-3000}:3000"
+    # Compose Watch copies each saved file into the container instead of
+    # bind-mounting the folder — bind mounts from Windows/macOS don't deliver
+    # file-change events, which breaks hot reload.
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - node_modules/
+            - .next/
+        # new dependencies → rebuild the image so pnpm install runs again
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: pnpm-lock.yaml
