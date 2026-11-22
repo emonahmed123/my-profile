@@ -41,9 +41,10 @@ export function Hero() {
             </DesignFrame>
 
             <p className="mt-6 max-w-md text-body-sm text-body md:text-body-md">
-              Full-Stack Web Developer specializing in high-performance React
-              and Next.js applications, scalable Node.js backends, and seamless
-              user experiences.
+              I&apos;m <strong className="text-foreground">Emon Ahmed</strong>,
+              a Full-Stack Engineer and Frontend Engineer — a web developer
+              specializing in high-performance React and Next.js applications,
+              scalable Node.js backends, and seamless user experiences.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
