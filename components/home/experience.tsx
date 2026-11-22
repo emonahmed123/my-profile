@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
+import DotPattern from "@/components/ui/dot-pattern-1";
 import { cn } from "@/lib/utils";
 
 interface Role {
@@ -111,7 +112,18 @@ export function Experience({ className }: ExperienceProps) {
       aria-labelledby="experience-heading"
       className={cn("scroll-mt-16 px-4 py-6 md:px-6 md:py-10", className)}
     >
-      <div className="mx-auto grid w-full max-w-[96rem] gap-12 px-4 py-12 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-16 lg:py-16">
+      <div className="relative isolate mx-auto grid w-full max-w-[96rem] gap-12 overflow-clip rounded-xl bg-canvas-soft px-4 py-12 md:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-16 lg:py-16">
+        {/* sage band — faint graph-paper grid behind the intro, a whisper of lime under it */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -bottom-56 -left-40 size-144 rounded-pill opacity-40 blur-3xl bg-[radial-gradient(circle,var(--primary)_0%,transparent_65%)]" />
+          <DotPattern
+            width={22}
+            height={22}
+            cr={1}
+            className="fill-ink/15 md:fill-ink/15 mask-[radial-gradient(55%_70%_at_0%_0%,black_0%,transparent_100%)]"
+          />
+        </div>
+
         <div className="lg:sticky lg:top-10 lg:self-start">
           <h2
             id="experience-heading"
@@ -144,7 +156,7 @@ export function Experience({ className }: ExperienceProps) {
                 <span
                   aria-hidden
                   className={cn(
-                    "relative grid size-12 place-items-center overflow-hidden rounded-lg text-body-sm font-semibold ring-8 ring-background",
+                    "relative grid size-12 place-items-center overflow-hidden rounded-lg text-body-sm font-semibold ring-8 ring-canvas-soft",
                     item.logo
                       ? "border border-border-soft bg-canvas"
                       : current
