@@ -81,21 +81,25 @@ export function Hero() {
       </div>
 
       {/*
-       * Riverside scene closes the hero, full-bleed. The artwork's empty sky
-       * (top ~45%) slides up under the content via a width-relative negative
-       * margin, so the overlap scales with the image; gradients melt its
-       * edges into the canvas.
+       * Riverside scene closes the hero, full-bleed; gradients melt its edges
+       * into the canvas.
+       * - Below lg the hero stacks and ends on the opaque portrait card, so
+       *   the scene only tucks into the portrait column's bottom padding
+       *   (-mt-12 = pb-12) and gets a fixed height, cropped around the big
+       *   boat — at its natural 3.35:1 ratio a phone would get a thin strip.
+       * - From lg the artwork keeps its ratio and its empty sky (top ~45%)
+       *   slides up under the two-column content via a width-relative margin.
        */}
       <div
         aria-hidden
-        className="pointer-events-none relative -mx-4 -mb-6 -mt-10 h-56 md:-mx-6 md:-mb-10 md:mt-[-25%] md:h-auto md:aspect-3738/1116"
+        className="pointer-events-none relative -mx-4 -mb-6 -mt-12 h-48 sm:h-64 md:-mx-6 md:-mb-10 md:h-72 lg:mt-[-25%] lg:h-auto lg:aspect-3738/1116"
       >
         <Image
           src="/assets/images/experience-river.webp"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover object-bottom"
+          className="object-cover object-[40%_100%] lg:object-bottom"
         />
         <span className="absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-background to-transparent" />
         <span className="absolute inset-x-0 bottom-0 h-1/6 bg-linear-to-t from-background to-transparent" />
