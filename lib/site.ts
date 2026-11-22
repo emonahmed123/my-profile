@@ -1,15 +1,13 @@
 /**
  * Site-wide identity used by metadata, JSON-LD, sitemap and robots.
  *
- * The canonical URL comes from `NEXT_PUBLIC_SITE_URL` (set it to the live
- * domain, e.g. `https://emonahmed.dev`). On Vercel it falls back to the
- * project's production domain, which Vercel injects at build time.
+ * The canonical URL is the live Vercel domain; set `NEXT_PUBLIC_SITE_URL` to
+ * override it (e.g. after moving to a custom domain).
  */
 function resolveSiteUrl() {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  if (process.env.VERCEL_PROJECT_PRODUCTION_URL)
-    return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
-  return "http://localhost:3000";
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL || "https://my-new-protfolio.vercel.app"
+  );
 }
 
 export const site = {
