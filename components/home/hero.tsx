@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import Image from "next/image";
 
 import Navbar from "@/components/home/navbar";
 import PortraitCard from "@/components/home/portrait-card";
@@ -14,7 +15,7 @@ export function Hero() {
         className="pointer-events-none absolute -left-32 -top-40 size-[36rem] rounded-pill opacity-25 blur-3xl bg-[radial-gradient(circle,var(--primary)_0%,transparent_65%)]"
       />
 
-      <div className="relative mx-auto w-full max-w-[96rem] overflow-hidden rounded-xl">
+      <div className="relative z-10 mx-auto w-full max-w-[96rem] overflow-hidden rounded-xl">
         <Navbar />
 
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-8">
@@ -77,6 +78,27 @@ export function Hero() {
             <PortraitCard className="relative z-10 mx-auto w-full max-w-md lg:mr-0 lg:max-w-lg" />
           </div>
         </div>
+      </div>
+
+      {/*
+       * Riverside scene closes the hero, full-bleed. The artwork's empty sky
+       * (top ~45%) slides up under the content via a width-relative negative
+       * margin, so the overlap scales with the image; gradients melt its
+       * edges into the canvas.
+       */}
+      <div
+        aria-hidden
+        className="pointer-events-none relative -mx-4 -mb-6 -mt-10 h-56 md:-mx-6 md:-mb-10 md:mt-[-25%] md:h-auto md:aspect-3738/1116"
+      >
+        <Image
+          src="/assets/images/experience-river.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-bottom"
+        />
+        <span className="absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-background to-transparent" />
+        <span className="absolute inset-x-0 bottom-0 h-1/6 bg-linear-to-t from-background to-transparent" />
       </div>
     </section>
   );
